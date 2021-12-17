@@ -215,8 +215,11 @@ new ThreadPoolExecutor(3, 6, 600L, TimeUnit.SECONDS, new ArrayBlockingQueue<Runn
 四种内存屏障：
 
 StoreStore
+
 StoreLoad
+
 LoadLoad
+
 LoadStore
 
 由于不同架构的CPU支持的内存屏障不同，x86 架构的 cpu 只支持 StoreLoad 屏障。下面介绍 StoreLoad 屏障是如何解决 MESI协议 引发的有序性和可见性问题。
@@ -457,3 +460,14 @@ InnoDB的索引采用B+树实现
 3. 使用布隆过滤器避免推荐给用户已经读过的文章
 4. 缓存穿透的前置校验，为什么不能完全依靠布隆过滤器来进行缓存穿透校验呢？因为布隆过滤器有一定的概率会判断失误，也就是对于大部分确实不存在的数据能够判断是不存在的。但是仍然后少量数据会判断为存在。所以这些请求还会落到数据库。
 
+### 在浏览器中输入域名，怎么请求到后端服务
+
+应用层 HTTP / RPC
+
+传输层 TCP / UDP
+
+网络层 IP协议
+
+数据链路层 MAC地址
+
+请求会经历装包拆包的过程
