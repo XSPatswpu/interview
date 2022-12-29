@@ -120,21 +120,18 @@ public class SyncTest {
     public synchronized void test1() {
 
         System.out.println("test1");
+	test2();
     }
 
     public synchronized void test2() {
         System.out.println("test2");
     }
 
-    public void test3() {
-        test1();
-        test2();
-    }
 }
 ```
 如上代码：
 
-线程在执行test3 方法的时候，需要重复的获取 test1、test2 方法的锁。这就是可重入锁，她解决的就是死锁的问题。
+线程在执行test1 方法的时候，又要去执行test2，这个时候由于当前对象的锁并没有释放，所以会发生死锁。这就是可重入锁，它解决的就是死锁的问题。
 
 ### ConcurrentHashMap实现线程安全的底层原理到底是什么？
 JDK 1.8 以前，采用多个数组，分段加锁。锁住的是一个大数组。
